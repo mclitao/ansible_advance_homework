@@ -57,6 +57,14 @@ EOF
 
 source credential.rc ; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8'
 
+https://tower1.8e50.example.opentlc.com/
+# to run job template to test
+
+cd ansible_advance_homework
+OSP_GUID=cba1
+ANSIBLE_ADVANCE_GUID=8e50
+ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}
+
 ###########################
 ## 3 tier app
 ssh -i ~/.ssh/id_rsa.redhat -tt zhengwan-redhat.com@bastion.d71e.example.opentlc.com byobu
