@@ -1,6 +1,6 @@
 - name: Create Homework Assignment project 
   command: |
-    tower-cli project create -n '{{proj_name}}' -d '{{proj_description}}'
+    tower-cli project create -n '{{ proj_name }}' -d '{{ proj_description }}'
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
