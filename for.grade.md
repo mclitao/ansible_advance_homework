@@ -18,6 +18,7 @@ ssh -i /root/.ssh/mykey.pem zhengwan-redhat.com@workstation-cba1.rhpds.opentlc.c
 git clone https://github.com/wangzheng422/ansible_advance_homework
 cd ansible_advance_homework
 OSP_GUID=cba1
+
 ansible-playbook site-setup-workstation.yml -e OSP_GUID=${OSP_GUID} --private-key=/root/.ssh/mykey.pem -u zhengwan-redhat.com
 
 ssh -i /root/.ssh/openstack.pem cloud-user@workstation-${OSP_GUID}.rhpds.opentlc.com
