@@ -55,7 +55,7 @@ export password=***
 export uri=https://labs.opentlc.com
 EOF
 
-source credential.rc ; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8'
+source credential.rc ; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8'
 
 ###########################
 ## 3 tier app
