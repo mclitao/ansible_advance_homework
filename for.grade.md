@@ -16,6 +16,7 @@ chmod 400 /root/.ssh/mykey.pem
 ssh -i /root/.ssh/mykey.pem zhengwan-redhat.com@workstation-cba1.rhpds.opentlc.com
 
 git clone https://github.com/wangzheng422/ansible_advance_homework
+
 cd ansible_advance_homework
 OSP_GUID=cba1
 
@@ -73,6 +74,60 @@ ssh -i ~/.ssh/id_rsa.redhat -tt zhengwan-redhat.com@bastion.d71e.example.opentlc
 #############################
 ## openstack
 ssh -i ~/.ssh/id_rsa.redhat -tt zhengwan-redhat.com@workstation-cba1.rhpds.opentlc.com byobu
+
+# wget http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+
+# cat openstack.pub  >> /home/cloud-user/.ssh/authorized_keys
+
+# yum install -y python-pip git
+# pip install openstacksdk ansible -U
+
+# mkdir /etc/openstack
+# cat << EOF > /etc/openstack/clouds.yaml
+# clouds:
+#   ospcloud:
+#     auth:
+#       auth_url: http://192.168.0.20:5000/
+#       password: r3dh4t1!
+#       project_name: admin
+#       username: admin
+#     identity_api_version: '3.0'
+#     region_name: RegionOne
+# ansible:
+#   use_hostnames: True
+#   expand_hostvars: False
+#   fail_on_errors: True
+# EOF
+
+# ansible localhost -m os_auth -a cloud=ospcloud
+# ansible localhost -m os_user_facts -a cloud=ospcloud
+
+
+# cat << EOF > osp_image.yml
+# - hosts: localhost
+#   become: yes
+
+#   tasks:
+#   - name: Download RHEL image
+#     get_url:
+#       url: http://www.opentlc.com/download/osp_advanced_networking/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+#       dest: /root/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+#   - name: Load RHEL image into Glance
+#     os_image:
+#       cloud: ospcloud
+#       name: rhel-guest
+#       container_format: bare
+#       disk_format: qcow2
+#       state: present
+#       filename: /root/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
+# EOF
+
+# ansible-playbook osp_image.yml
+
+# git clone https://github.com/prakhar1985/osp-ansible-lab.git
+# cd osp-ansible-lab
+
+# ansible-playbook site-osp-setup.yml
 
 
 
