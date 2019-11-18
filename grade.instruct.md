@@ -1,3 +1,8 @@
+github: https://github.com/wangzheng422/ansible_advance_homework
+
+tower id: 8e50
+openstack id: cba1
+3 tier app id: 11b9
 ```bash
 
 ###########################
@@ -63,7 +68,7 @@ https://tower1.8e50.example.opentlc.com/
 # run the grading ansible playbook
 cd ansible_advance_homework
 OSP_GUID=cba1
-ANSIBLE_ADVANCE_GUID=8e50
+ANSIBLE_ADVANCE_GUID=11b9
 ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}
 
 ```
