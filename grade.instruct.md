@@ -3,6 +3,8 @@ github: https://github.com/wangzheng422/ansible_advance_homework
 tower id: 8e50
 openstack id: cba1
 3 tier app id: 11b9
+
+![](imgs/2019-11-18-14-17-59.png)
 ```bash
 
 ###########################
