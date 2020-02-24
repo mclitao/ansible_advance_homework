@@ -1,0 +1,41 @@
+---
+- name: create hwreport
+  hosts: all
+  tasks:
+    - name: download hwreport.empty
+      get_url:
+        url: http://materials.example.com/hwreport.empty
+        dest: /root/hwreport.txt
+    - name: hostname
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^HOST'
+        line: "HOST={{ ansible_hostname }}"
+    - name: memory
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^MEMORY'
+        line: "MEMORY={{ ansible_memtotal_mb }}"
+    - name: BIOS
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^BIOS'
+        line: "BIOS={{ ansible_bios_version }}"
+    - name: DISK_SIZE_VDA
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^DISK_SIZE_VDA'
+        line: "DISK_SIZE_VDA={{ ansible_devices.vda.size }}"
+      when: ansible_devices.vda.size is defined
+    - name: DISK_SIZE_VDB is none
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^DISK_SIZE_VDB'
+        line: "DISK_SIZE_VDB=NONE"
+      when: ansible_devices.vdb.size is not defined
+    - name: DISK_SIZE_VDB
+      lineinfile:
+        path: /root/hwreport.txt
+        regexp: '^DISK_SIZE_VDB'
+        line: "DISK_SIZE_VDB={{ ansible_devices.vda.size }}"
+      when: ansible_devices.vdb.size is defined
