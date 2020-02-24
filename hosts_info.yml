@@ -4,7 +4,7 @@
   tasks:
     - name: download hwreport.empty
       get_url:
-        url: http://materials.example.com/hwreport.empty
+        url: https://github.com/mclitao/ansible_advance_homework/hwreport.empty
         dest: /root/hwreport.txt
     - name: hostname
       lineinfile:
