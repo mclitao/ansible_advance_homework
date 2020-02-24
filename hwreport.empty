@@ -1,0 +1,6 @@
+# Hardware report
+HOST={{ HOST }}
+MEMORY={{ MEMORY }}
+BIOS={{ BIOS }}
+DISK_SIZE_VDA={{ DISK_SIZE_VDA }}
+DISK_SIZE_VDB={{ DISK_SIZE_VDB }}
